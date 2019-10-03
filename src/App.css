@@ -5,10 +5,8 @@ body{
   font-size: 5rem;
 }
 
-.textColor {
-  color: #FF1493;	
-}
-
-.topMargin {
-  margin-top: 10px;
+.header {
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
