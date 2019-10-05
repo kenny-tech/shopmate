@@ -2,11 +2,30 @@
 body{
   font-family: Arial, Helvetica, sans-serif;
   color: #23252b;
-  font-size: 5rem;
+  font-size: 2rem;
+  background-color: #d3d3d3 !important;
 }
 
 .header {
   background-color: black;
   color: white;
   padding: 10px;
+}
+
+.sidebarPanel {
+  background: white;
+  width: 220px;
+  height: 230px;
+  margin-top: 30px;
+}
+
+.sidebarButton {
+  background: #d3d3d3 !important;
+  color: black !important;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.searchBox {
+  width: 200px;
 }
