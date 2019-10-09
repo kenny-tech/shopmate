@@ -1,0 +1,8 @@
+#signUpModal .modal-dialog.modal-md {
+    padding: 100px;
+}
+
+#signUpModal .modal-body {
+    padding: 50px 60px;
+}
+
