@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Signup from './Modal/Signup'; 
+
 class Header extends Component {
     render() {
         return (
@@ -10,10 +12,11 @@ class Header extends Component {
                             <p>Logo</p>
                         </div>
                         <div className="col-md-6">
-                            <p className="pull-right">Register | Login</p>
+                            <p className="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Register</button> | Login</p>
                         </div>
                     </div>
                 </div>
+                <Signup />
             </React.Fragment>
         )
     }
