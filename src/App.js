@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Product from './components/Product';
 
 class App extends Component {
   render(){
@@ -11,6 +12,7 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Sidebar />
+        <Product />
       </React.Fragment>
     );
   }

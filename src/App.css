@@ -11,21 +11,3 @@ body{
   color: white;
   padding: 10px;
 }
-
-.sidebarPanel {
-  background: white;
-  width: 220px;
-  height: 400px;
-  margin-top: 30px;
-}
-
-.sidebarButton {
-  background: #d3d3d3 !important;
-  color: black !important;
-  width: 200px;
-  margin-top: 10px;
-}
-
-.searchBox {
-  width: 200px;
-}
