@@ -4,7 +4,7 @@ export const reducer = ( state = {}, action) => {
     
     switch (action.type) {
         case FETCH_PRODUCT:
-            return { ...state, product: action.payload }
+            return { ...state, allProducts: action.payload }
         default:
             return state;
     }
