@@ -11,8 +11,12 @@ class App extends Component {
     return (      
       <React.Fragment>
         <Header />
-        <Sidebar />
-        <Product />
+        <div className="container-fluid p-3">
+          <div className="row">
+            <Sidebar />
+            <Product />
+          </div>
+        </div>
       </React.Fragment>
     );
   }

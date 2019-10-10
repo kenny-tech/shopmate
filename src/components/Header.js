@@ -12,7 +12,7 @@ class Header extends Component {
                             <p>Logo</p>
                         </div>
                         <div className="col-md-6">
-                            <p className="pull-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Register</button> | Login</p>
+                            <p className="pull-right">Register | Login</p>
                         </div>
                     </div>
                 </div>
