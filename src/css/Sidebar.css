@@ -3,6 +3,7 @@
     width: 220px;
     height: 400px;
     margin-top: 30px;
+    float: left;
   }
   
   .sidebarButton {

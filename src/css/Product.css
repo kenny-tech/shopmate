@@ -1,0 +1,13 @@
+.productCard {
+    width: 18rem;
+    margin: 25px;
+}
+
+.productDiv {
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.productTitle {
+    font-weight: bold;
+}

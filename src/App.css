@@ -2,7 +2,7 @@
 body{
   font-family: Arial, Helvetica, sans-serif;
   color: #23252b;
-  font-size: 2rem;
+  font-size: 0.8rem !important;
   background-color: #d3d3d3 !important;
 }
 
@@ -10,4 +10,9 @@ body{
   background-color: black;
   color: white;
   padding: 10px;
+}
+
+.textPink {
+  color: #FF1493;
+  font-weight: bold;
 }
