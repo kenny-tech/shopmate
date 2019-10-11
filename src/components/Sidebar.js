@@ -8,7 +8,7 @@ import '../css/Sidebar.css';
 class Sidebar extends Component {
     render() {
         return (
-            <div className="sidebarPanel p-2">
+            <div className="sidebarPanel p-3">
                 <SearchBox />
                 <Department />
                 <Category />

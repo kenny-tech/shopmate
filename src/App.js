@@ -13,8 +13,12 @@ class App extends Component {
         <Header />
         <div className="container-fluid p-3">
           <div className="row">
-            <Sidebar />
-            <Product />
+            <div className="col-md-3">
+              <Sidebar />
+            </div>
+            <div className="col-md-9 row">
+              <Product />
+            </div>
           </div>
         </div>
       </React.Fragment>

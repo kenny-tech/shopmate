@@ -25,11 +25,11 @@ class Product extends Component {
                 {
                     productArray.map(product => {
                         return (
-                            <div className="col-md-3">
-                                <div className="card productCard">
-                                    <img src={imageBaseUrl + product.thumbnail} class="card-img-top" alt={product.name} />
+                            <div className="col-md-3 productDiv">
+                                <div className="card">
+                                    <img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} />
                                     <div className="card-body">
-                                        <h5 className="card-title text-center">{product.name}</h5>
+                                        <p className="card-title text-center productTitle">{product.name}</p>
                                         <p className="card-text text-center textPink">${product.price}</p>
                                     </div>
                                 </div>
