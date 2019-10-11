@@ -4,33 +4,38 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/';
 
 import '../css/Product.css';
+import '../App.css';
+
+const imageBaseUrl = 'https://backendapi.turing.com/images/products/';
 
 class Product extends Component {
-
     componentWillMount() {
         this.props.fetchProducts();   
     }
 
     render() {
-       //console.log('The products: ',this.props.products);
         if(!this.props.products) {
             return <div>Loading...</div>
         }
+        const productArray = Object.values(this.props.products.rows);
+        //console.log('The product array: ', productArray);
 
         return (
             <React.Fragment>    
                 {
-                    this.props.products!=null ?          
-                    (<div className="col-md-3">
-                        <div className="card productCard">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Product Name</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    productArray.map(product => {
+                        return (
+                            <div className="col-md-3">
+                                <div className="card productCard">
+                                    <img src={imageBaseUrl + product.thumbnail} class="card-img-top" alt={product.name} />
+                                    <div className="card-body">
+                                        <h5 className="card-title text-center">{product.name}</h5>
+                                        <p className="card-text text-center textPink">${product.price}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>)
-                    : <div>No product found</div> 
+                        )
+                    })
                 }
             </React.Fragment>
         )

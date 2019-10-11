@@ -11,3 +11,8 @@ body{
   color: white;
   padding: 10px;
 }
+
+.textPink {
+  color: #FF1493;
+  font-weight: bold;
+}
