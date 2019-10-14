@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchDepartments: () => dispatch(fetchDepartments()),
-        fetchDepartmentCategories: department_id => {dispatch(fetchDepartmentCategories(department_id))}
+        fetchDepartmentCategories: (department_id) => {dispatch(fetchDepartmentCategories(department_id))}
     }
 }
 

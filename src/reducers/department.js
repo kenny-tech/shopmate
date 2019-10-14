@@ -5,7 +5,7 @@ export const reducer = ( state = {}, action ) => {
         case FETCH_DEPARTMENT:
             return { ...state, allDepartments: action.payload }
         case FETCH_DEPARTMENT_CATEGORIES:
-            return { ...state, departmentCategories: action.payload}
+            return { ...state, categories: action.payload}
         default:
             return state;
     }

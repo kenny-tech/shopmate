@@ -25,7 +25,7 @@ export function fetchDepartmentCategories(department_id)
     return (dispatch) => {
         axios.get(ROOT_URL + 'categories/inDepartment/'+ department_id)
         .then(response => {
-            // console.log('Response:', response);
+            console.log('Response:', response);
             dispatch({
                 type: FETCH_DEPARTMENT_CATEGORIES,
                 payload: response.data
