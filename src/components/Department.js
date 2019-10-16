@@ -20,7 +20,7 @@ class Department extends Component {
                 {departmentArray.map(department => {
                     return (
                         <div>
-                            <button className="btn btn-default btn-xs sidebarButton" onClick={fetchDepartmentCategories(department.department_id)}>{department.name}</button>
+                            <button className="btn btn-default btn-xs sidebarButton" onClick={this.props.fetchDepartmentCategories(department.department_id)}>{department.name}</button>
                         </div>
                     );
                 })}
