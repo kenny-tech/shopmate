@@ -22,21 +22,27 @@ class Product extends Component {
 
         return (
             <React.Fragment>    
-                {
-                    productArray.map(product => {
-                        return (
-                            <div className="col-md-3 productDiv">
-                                <div className="card">
-                                    <img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} />
-                                    <div className="card-body">
-                                        <p className="card-title text-center productTitle">{product.name}</p>
-                                        <p className="card-text text-center textPink">${product.price}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+                <div className="container-fluid p-3">
+                    <div className="row">
+                        <div className="col-md-9 row">
+                            {
+                                productArray.map(product => {
+                                    return (
+                                            <div className="col-md-3 productDiv">
+                                                <div className="card">
+                                                    <img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} />
+                                                    <div className="card-body">
+                                                        <p className="card-title text-center productTitle">{product.name}</p>
+                                                        <p className="card-text text-center textPink">${product.price}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
             </React.Fragment>
         )
     }
