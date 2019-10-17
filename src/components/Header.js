@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import Modal from '../components/Modal';
 import Signup from '../components/Auth/Signup';
+import '../css/Header.css';
 
 class Header extends Component {
     state = {
-        showModal: true
+        showModal: false
     }
 
     toggleModal = () => {
@@ -18,17 +19,15 @@ class Header extends Component {
         return (
             <React.Fragment>
                 <div>
-                    {/* <div className="row header">
+                    <div className="row header">
                         <div className="col-md-6">
                             <p>Logo</p>
                         </div>
                         <div className="col-md-6">
-                            <button className="btn btn-primary" onClick={this.toggleModal}>Register Now</button>
+                            <span onClick={this.toggleModal} className="pull-right cursor-pointer">Register Now</span>
                         </div>
-                    </div> */}
-                    <button className="btn btn-primary" onClick={this.toggleModal}>Register Now</button>
-
-                    <Modal open={this.state.showModal} onClose={this.toggleModal}><Signup /></Modal>
+                    </div>
+                    <Modal open={this.state.showModal} onClose={this.toggleModal} title="Sign up"><Signup /></Modal>
                 </div>
             </React.Fragment>
         )
