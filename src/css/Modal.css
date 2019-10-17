@@ -1,7 +1,6 @@
 #signupModal .modal-dialog.modal-md {
     padding: 100px;
     background: #ffffff;
-    z-index: 1000;
 }
 
 #signupModal .modal-body {
