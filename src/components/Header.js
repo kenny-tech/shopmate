@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 
-import Signup from './Modal/Signup'; 
+import Modal from '../components/Modal';
+import Signup from '../components/Auth/Signup';
+import '../css/Header.css';
 
 class Header extends Component {
+    state = {
+        showModal: false
+    }
+
+    toggleModal = () => {
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
-                <div className="container-fluid">
+                <div>
                     <div className="row header">
                         <div className="col-md-6">
                             <p>Logo</p>
                         </div>
                         <div className="col-md-6">
-                            <p className="pull-right">Register | Login</p>
+                            <span onClick={this.toggleModal} className="pull-right cursor-pointer">Register Now</span>
                         </div>
                     </div>
+                    <Modal open={this.state.showModal} onClose={this.toggleModal} title="Sign up"><Signup /></Modal>
                 </div>
-                <Signup />
             </React.Fragment>
         )
     }
