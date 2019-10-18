@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchDepartments, fetchDepartmentCategories} from '../actions/department';
+import { fetchDepartments } from '../actions/department';
+import { fetchDepartmentCategories} from '../actions/category';
+
 
 class Department extends Component {
     componentWillMount () {
@@ -20,7 +22,7 @@ class Department extends Component {
                 {departmentArray.map(department => {
                     return (
                         <div>
-                            <button className="btn btn-default btn-xs sidebarButton" onClick={fetchDepartmentCategories(department.department_id)}>{department.name}</button>
+                            <button className="btn btn-default btn-xs sidebarButton" onClick={()=>this.props.fetchDepartmentCategories(department.department_id)}>{department.name}</button>
                         </div>
                     );
                 })}
