@@ -30,3 +30,16 @@ export const fetchCategoryProducts = (category_id) => {
         });
     };
 };
+
+export const fetchSearchProduct = (searchText) => {
+    return (dispatch) => {
+        axios.get(ROOT_URL + 'products/search/?query_string=' + searchText)
+        .then(response => {
+            console.log('Search Product: ', response);
+            dispatch({
+                type: FETCH_PRODUCT,
+                payload: response.data
+            });
+        });
+    };
+};
