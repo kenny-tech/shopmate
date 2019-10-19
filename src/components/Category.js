@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
+import { fetchCategoryProducts } from '../actions/product';
 
 class Category extends Component {
     render() {
@@ -16,7 +17,7 @@ class Category extends Component {
                 {categoryArray.map(category => {
                     return (
                         <div>
-                            <button key={category.id} className="btn btn-default btn-xs sidebarButton">{category.name}</button>
+                            <button key={category.category_id} className="btn btn-default btn-xs sidebarButton" onClick={()=>this.props.fetchCategoryProducts(category.category_id)}>{category.name}</button>
                         </div>
                     );
                 })}
@@ -30,4 +31,8 @@ const mapStateToProps = (state) => {
     return { departmentCategories: state.dept.categories, };
 }
 
-export default connect(mapStateToProps,null)(Category);
+const mapDispatchToProps = (dispatch) => {
+    return { fetchCategoryProducts: (category_id) => {dispatch(fetchCategoryProducts(category_id))}}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Category);
