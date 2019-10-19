@@ -14,9 +14,11 @@ class Product extends Component {
     }
 
     render() {
+        
         if(!this.props.products) {
             return <div>Loading...</div>
         }
+        
         const productArray = Object.values(this.props.products.rows);
         //console.log('The product array: ', productArray);
 
