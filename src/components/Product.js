@@ -77,8 +77,8 @@ class Product extends Component {
             <React.Fragment>    
                 <div className="container-fluid p-3">
                     <div className="row">
-                        <div className="col-md-12 text-center">
-                            <ul className="d-inline">
+                        <div className="col-md-12">
+                            <ul id="page-numbers">
                                 {renderPageNumbers}
                             </ul>
                         </div>
