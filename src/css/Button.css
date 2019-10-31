@@ -1,5 +1,5 @@
 .buttonFormat {
     background-color: #FF1493;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border-radius: 20px;
 }

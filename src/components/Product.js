@@ -45,12 +45,24 @@ class Product extends Component {
                             {
                                 productArray.map(product => {
                                     { 
-                                        if(this.state.hover || this.state.productId == product.product_id) {
+                                        if(this.state.hover || this.state.productId === product.product_id) {
                                             return (<div className="col-md-3 productDiv" onMouseEnter={() => this.toggleHover(product.product_id)} onMouseLeave={() => this.toggleHover()} style={{ cursor: 'pointer' }}>
-                                                <div className="card">
+                                                <div className="card productCard">
                                                     <div className="card-body">
                                                         <p className="card-title text-center productTitle">{product.name}</p>
                                                         <p className="card-text text-center textPink">${product.price}</p>
+                                                        <form className="form-inline">
+                                                            <select className="form-control form-control-sm" id="inlineFormCustomSelectPref">
+                                                                <option value="s">S</option>
+                                                                <option value="m">M</option>
+                                                                <option value="l">L</option>
+                                                            </select>
+                                                            <select className="form-control form-control-sm" id="inlineFormCustomSelectPref">
+                                                                <option value="white">White</option>
+                                                                <option value="black">Black</option>
+                                                                <option value="yellow">Yellow</option>
+                                                            </select>
+                                                        </form>
                                                         <p className="text-center"><Button buttonText = "Add to cart"/></p>
                                                     </div>
                                                 </div>
@@ -59,7 +71,7 @@ class Product extends Component {
                                         } 
                                         return (
                                             <div className="col-md-3 productDiv" onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} style={{ cursor: 'pointer' }}>
-                                                <div className="card">
+                                                <div className="card productCard">
                                                     <img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} />
                                                     <div className="card-body">
                                                         <p className="card-title text-center productTitle">{product.name}</p>
