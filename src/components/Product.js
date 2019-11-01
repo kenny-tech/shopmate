@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import * as actions from '../actions/product';
+import { fetchProducts } from '../actions/product';
+import { addToCart } from '../actions/cart';
 import Button from '../components/Button';
 
 import '../css/Product.css';
@@ -13,7 +14,9 @@ class Product extends Component {
 
     state = {
         hover: false,
-        productId: 0
+        productId: 0,
+        size: 'm',
+        color: 'white'
     }
 
     componentWillMount() {
@@ -63,7 +66,7 @@ class Product extends Component {
                                                                 <option value="yellow">Yellow</option>
                                                             </select>
                                                         </form>
-                                                        <p className="text-center"><Button buttonText = "Add to cart"/></p>
+                                                        <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.props.addToCart(product.product_id,product.name,product.price,this.state.size,this.state.color)}>Add to cart</button></p>
                                                     </div>
                                                 </div>
                                             </div>)
@@ -95,4 +98,11 @@ const mapStateToProps = (state) => {
     return { products: state.products.allProducts}
 }
 
-export default connect(mapStateToProps, actions)(Product);
+const mapDispatchToProps = (dispatch) => {
+    return { 
+            fetchProducts: () => {dispatch(fetchProducts())},
+            addToCart: (product_id,product_name,price,size,color) => {dispatch(addToCart(product_id,product_name,price,size,color))}
+        }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
