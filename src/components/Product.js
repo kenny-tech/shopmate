@@ -66,7 +66,7 @@ class Product extends Component {
                                                                 <option value="yellow">Yellow</option>
                                                             </select>
                                                         </form>
-                                                        <p className="text-center"><Button buttonText = "Add to cart" onClick={ () => this.props.addToCart(product.product_id,product.name,product.price,this.state.size,this.state.color)}/></p>
+                                                        <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.props.addToCart(product.product_id,product.name,product.price,this.state.size,this.state.color)}>Add to cart</button></p>
                                                     </div>
                                                 </div>
                                             </div>)

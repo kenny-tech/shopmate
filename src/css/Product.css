@@ -19,3 +19,9 @@
 .formContent {
     margin-bottom: 30px;
 }
+
+.buttonAddToCart {
+    background-color: #FF1493 !important;
+    color: #FFFFFF !important;
+    border-radius: 20px !important;
+}
