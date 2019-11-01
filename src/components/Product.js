@@ -50,14 +50,14 @@ class Product extends Component {
                                                 <div className="card productCard">
                                                     <div className="card-body">
                                                         <p className="card-title text-center productTitle">{product.name}</p>
-                                                        <p className="card-text text-center textPink">${product.price}</p>
-                                                        <form className="form-inline">
-                                                            <select className="form-control form-control-sm" id="inlineFormCustomSelectPref">
+                                                        <p className="card-text text-center textPink m-b-25">${product.price}</p>
+                                                        <form className="form-inline d-flex justify-content-center formContent">
+                                                            <select className="form-control form-control-sm selectSpacing">
                                                                 <option value="s">S</option>
                                                                 <option value="m">M</option>
                                                                 <option value="l">L</option>
                                                             </select>
-                                                            <select className="form-control form-control-sm" id="inlineFormCustomSelectPref">
+                                                            <select className="form-control form-control-sm">
                                                                 <option value="white">White</option>
                                                                 <option value="black">Black</option>
                                                                 <option value="yellow">Yellow</option>

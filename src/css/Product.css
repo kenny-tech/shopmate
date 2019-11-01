@@ -1,6 +1,7 @@
 .productCard {
     width: 13rem;
     margin: 25px;
+    height: 250px;
 }
 
 .productDiv {
@@ -9,4 +10,12 @@
 
 .productTitle {
     font-weight: bold;
+}
+
+.selectSpacing {
+    margin-right: 20px;
+}
+
+.formContent {
+    margin-bottom: 30px;
 }
