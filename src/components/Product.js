@@ -28,12 +28,12 @@ class Product extends React.PureComponent {
             hover: !this.state.hover,
             productId: product_id
         });
-        console.log('Current state is: ', this.state);
+        //console.log('Current state is: ', this.state);
     }
 
     render() {
 
-        console.log('rendering...');
+        //console.log('rendering...');
         
         if(!this.props.products) {
             return <div>Loading...</div>
@@ -58,7 +58,7 @@ class Product extends React.PureComponent {
                                     <option value="yellow">Yellow</option>
                                 </select>
                             </form>
-                            <p className="text-center"><button>Add to cart</button></p>
+                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.props.addToCart(product.product_id,product.name,product.price,this.state.size,this.state.color)}>Add to cart</button></p>
                         </div>
                     </div>
                 </div>)
