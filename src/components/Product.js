@@ -41,7 +41,7 @@ class Product extends React.PureComponent {
                 
         const renderProducts = Object.values(this.props.products.rows).map((product, index) => {
             if(this.state.hover || this.state.productId === product.product_id) {
-                return (<div className="col-md-3 productDiv" onMouseEnter={() => this.toggleHover(product.product_id)} onMouseLeave={() => this.toggleHover()} style={{ cursor: 'pointer' }}>
+                return (<div className="col-md-3 productDiv" key={product.product_id} onMouseEnter={() => this.toggleHover(product.product_id)} onMouseLeave={() => this.toggleHover()} style={{ cursor: 'pointer' }}>
                     <div className="card productCard">
                         <div className="card-body">
                             <p className="card-title text-center productTitle">{product.name}</p>
@@ -64,7 +64,7 @@ class Product extends React.PureComponent {
                 </div>)
             } 
             return (
-                <div className="col-md-3 productDiv" onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} style={{ cursor: 'pointer' }}>
+                <div className="col-md-3 productDiv" key={product.product_id} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} style={{ cursor: 'pointer' }}>
                     <div className="card productCard">
                         <img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} />
                         <div className="card-body">
