@@ -9,8 +9,8 @@ export function addToCart(product_id,product_name,price,size,color)
         size: size,
         color: color 
     }
-    alert(product_id);
-    console.log('Cart Items: ', cartItems)
+    //alert(product_id);
+    //console.log('Cart Items: ', cartItems)
     return {
         type: ADD_TO_CART,
         payload: cartItems
