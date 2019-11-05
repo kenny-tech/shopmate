@@ -6,21 +6,16 @@ import '../css/Category.css';
 
 class Category extends Component {
     render() {
+        console.log('Cart: ',this.props.cart);
 
         if(!this.props.departmentCategories) {
             return null
         }
 
         const renderCart = () => {
-            if(this.props.cart!=null) {
-                console.log('Cart: ',Object.values(this.props.cart));
-
-                let cartItems = Object.values(this.props.cart)
-                cartItems.map(product => {
-                    return (<div className="cartDiv">
-                        <p>{product.product_name}</p>
-                    </div>)
-                });
+            if(this.props.cart!=='undefined') {
+                Object.values(this.props.cart);
+                return <h3>{this.props.cart.product_name}</h3>
             }
         }
 
