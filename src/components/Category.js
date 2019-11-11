@@ -3,20 +3,12 @@ import { connect } from 'react-redux';
 
 import { fetchCategoryProducts } from '../actions/product';
 import '../css/Category.css';
+import Cart from './Cart';
 
 class Category extends Component {
     render() {
-        console.log('Cart: ',this.props.cart);
-
         if(!this.props.departmentCategories) {
-            return null
-        }
-
-        const renderCart = () => {
-            if(this.props.cart!=='undefined') {
-                Object.values(this.props.cart);
-                return <h3>{this.props.cart.product_name}</h3>
-            }
+            return <Cart />
         }
 
         const categoryArray = Object.values(this.props.departmentCategories);
@@ -31,7 +23,6 @@ class Category extends Component {
                         </div>
                     );
                 })}    
-                {renderCart}
             </div> 
         )
     }

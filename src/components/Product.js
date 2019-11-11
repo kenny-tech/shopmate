@@ -18,9 +18,11 @@ class Product extends React.PureComponent {
     state = {
         hover: false,
         productId: 0,
-        size: 'm',
-        color: 'white',
-        products: this.props.products
+    }
+
+    handleClick = (product_id,product,price) => {
+        //alert(product_id);
+        this.props.addToCart(product_id,product,price);
     }
 
     toggleHover = (product_id) => {
@@ -58,7 +60,7 @@ class Product extends React.PureComponent {
                                     <option value="yellow">Yellow</option>
                                 </select>
                             </form>
-                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.props.addToCart(product.product_id,product.name,product.price,this.state.size,this.state.color)}>Add to cart</button></p>
+                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.handleClick(product.product_id,product.name,product.price)}>Add to cart</button></p>
                         </div>
                     </div>
                 </div>)
@@ -100,7 +102,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return { 
             fetchProducts: () => {dispatch(fetchProducts())},
-            addToCart: (product_id,product_name,price,size,color) => {dispatch(addToCart(product_id,product_name,price,size,color))}
+            addToCart: (product_id,product,price) => {dispatch(addToCart(product_id,product,price))}
         }
 }
 
