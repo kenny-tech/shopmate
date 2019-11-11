@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
+
 import { fetchCategoryProducts } from '../actions/product';
+import '../css/Category.css';
+import Cart from './Cart';
 
 class Category extends Component {
     render() {
         if(!this.props.departmentCategories) {
-            return null
+            return <Cart />
         }
 
         const categoryArray = Object.values(this.props.departmentCategories);
-        
+
         return (
             <div className="categoryDiv">
                 <h6>Category</h6>
@@ -20,15 +22,17 @@ class Category extends Component {
                             <button key={category.category_id} className="btn btn-default btn-xs sidebarButton" onClick={()=>this.props.fetchCategoryProducts(category.category_id)}>{category.name}</button>
                         </div>
                     );
-                })}
-                
-            </div>
+                })}    
+            </div> 
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return { departmentCategories: state.dept.categories, };
+    return { 
+        departmentCategories: state.dept.categories, 
+        cart: state.cart.items
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {

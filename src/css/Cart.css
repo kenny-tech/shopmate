@@ -1,0 +1,33 @@
+.cartDiv {
+    background: #d3d3d3 !important;
+    color: black !important;
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.times {
+    color: #FF1493;
+}
+
+.removeItem {
+    border-radius: 20px;
+    background: #ffffff;
+    color: #FF1493;
+    font-weight: bold;
+}
+
+.textPink {
+    color: #FF1493;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.removeItemHover { 
+    cursor: pointer; 
+}
+
