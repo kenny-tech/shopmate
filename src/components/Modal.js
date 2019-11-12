@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../css/SignupModal.css';
+import '../css/Modal.css';
 
 const Modal = ({ children, onClose, open, title }) => 
     open ? (ReactDOM.createPortal (
