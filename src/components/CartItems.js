@@ -12,16 +12,30 @@ class CartItems extends Component {
             return (
                 <React.Fragment>
                     <div>
-                        {this.props.cart.map(product => {
-                            return (
-                                <div className="cartDiv">
-                                    <p>1 <span className="times">x </span>{product.product}<span className="pull-right removeItem removeItemHover">x</span></p>
-                                </div>
-                            );
-                        })}   
-                        {
-                            this.props.cart!==null? <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p> : null
-                        }
+                        <table className="table">
+                            <thead>
+                                <th scope="col">Item</th>
+                                <th scope="col">Options</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Action</th>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.props.cart.map(product => {
+                                        return (
+                                            <tr>
+                                                <td>{product.product}</td>
+                                                <td>Size: S<br/>Color: White</td>
+                                                <td>1</td>
+                                                <td>${product.price}</td>
+                                                <td><span className="pull-right removeItem removeItemHover">x</span></td>
+                                            </tr>
+                                        );
+                                })}   
+                            </tbody>
+                        </table>
+                        { this.props.cart!==null? <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p> : null }
                     </div> 
                 </React.Fragment>
             )
