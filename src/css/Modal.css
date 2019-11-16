@@ -1,12 +1,15 @@
-#signupModal .modal-dialog.modal-md {
+#modal .modal-dialog.modal-md {
     padding: 50px;
+    overflow-y: initial !important
 }
 
-#signupModal .modal-body {
+#modal .modal-body {
     padding: 50px 60px;
+    height: 500px;
+    overflow-y: auto;
 }
 
-#signupModal {
+#modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -16,4 +19,5 @@
     justify-content: center;
     background-color: rgba(0,0,0,0.5); /*dim the background*/
 }
+
 

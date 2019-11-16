@@ -1,7 +1,7 @@
 import { ADD_TO_CART } from './types';
 import { REMOVE_FROM_CART } from './types';
 
-export const addToCart = (product_id,product,price,thumbnail) =>
+export const addToCart = (product_id,product,price,thumbnail,quantity,size,color) =>
 {
     return {
         type: ADD_TO_CART,
@@ -9,7 +9,10 @@ export const addToCart = (product_id,product,price,thumbnail) =>
             product_id,
             product,
             price,
-            thumbnail
+            thumbnail,
+            quantity,
+            size,
+            color
         }
       }
 }

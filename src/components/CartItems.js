@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import '../css/Cart.css';
+import { removeFromCart } from '../actions/cart';
+import Button from './Button';
+
+const imageBaseUrl = 'https://backendapi.turing.com/images/products/';
 
 class CartItems extends Component {    
+
+    handleClick = (product_id, price) => {
+        this.props.removeFromCart(product_id, price); 
+    }
+
     render() {
         //console.log('cart aaa: ',this.props.cart);
         if(!this.props.cart) {
@@ -25,17 +34,18 @@ class CartItems extends Component {
                                     this.props.cart.map(product => {
                                         return (
                                             <tr>
-                                                <td>{product.product}</td>
-                                                <td>Size: S<br/>Color: White</td>
-                                                <td>1</td>
+                                                <td><img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} /><br/>{product.product}</td>
+                                                <td>Size: {product.size}<br/>Color: {product.color}</td>
+                                                <td><input type="number" className="form-control" style={{width:'80px'}} defaultValue={product.quantity} min="1"/></td>
                                                 <td>${product.price}</td>
-                                                <td><span className="pull-right removeItem removeItemHover">x</span></td>
+                                                <td><span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></td>
                                             </tr>
                                         );
                                 })}   
                             </tbody>
                         </table>
-                        { this.props.cart!==null? <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p> : null }
+                        <div className="float-right d-block">{ this.props.cart!==null? <p>Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p> : null }</div>
+                        <div className="d-block text-right cursor-pointer"><Button buttonText = "Checkout"/></div>
                     </div> 
                 </React.Fragment>
             )
@@ -51,4 +61,8 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps,null)(CartItems);
+const mapDispatchToProps = (dispatch) => {
+    return { removeFromCart: (product_id, price) => {dispatch(removeFromCart(product_id, price))}}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CartItems);

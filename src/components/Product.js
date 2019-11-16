@@ -20,9 +20,9 @@ class Product extends React.PureComponent {
         productId: 0,
     }
 
-    handleClick = (product_id,product,price,thumbnail) => {
+    handleClick = (product_id,product,price,thumbnail,quantity,size,color) => {
         //alert(product_id);
-        this.props.addToCart(product_id,product,price,thumbnail);
+        this.props.addToCart(product_id,product,price,thumbnail,quantity,size,color);
     }
 
     toggleHover = (product_id) => {
@@ -34,6 +34,10 @@ class Product extends React.PureComponent {
     }
 
     render() {
+
+        let quantity = 1;
+        let size = 'S';
+        let color = 'White';
 
         //console.log('rendering...');
         
@@ -60,7 +64,7 @@ class Product extends React.PureComponent {
                                     <option value="yellow">Yellow</option>
                                 </select>
                             </form>
-                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.handleClick(product.product_id,product.name,product.price,product.thumbnail)}>Add to cart</button></p>
+                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.handleClick(product.product_id,product.name,product.price,product.thumbnail,quantity,size,color)}>Add to cart</button></p>
                         </div>
                     </div>
                 </div>)
@@ -102,7 +106,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return { 
             fetchProducts: () => {dispatch(fetchProducts())},
-            addToCart: (product_id,product,price,thumbnail) => {dispatch(addToCart(product_id,product,price,thumbnail))}
+            addToCart: (product_id,product,price,thumbnail,quantity,size,color) => {dispatch(addToCart(product_id,product,price,thumbnail,quantity,size,color))}
         }
 }
 
