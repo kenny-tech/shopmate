@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../css/SignupModal.css';
+import '../css/Modal.css';
 
 const Modal = ({ children, onClose, open, title }) => 
     open ? (ReactDOM.createPortal (
-        <div className="modal" id="signupModal" tabindex="-1" role="dialog">
-            <div className="modal-dialog" role="document">
+        <div className="modal" id="modal" tabindex="-1" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title">{title}</h5>
