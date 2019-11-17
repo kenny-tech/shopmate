@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../actions/product';
-import { addToCart } from '../actions/cart';
-
 import '../css/Product.css';
 import '../App.css';
+
+import { fetchProducts } from '../actions/product';
+import { fetchProductDetail } from '../actions/product';
+import { addToCart } from '../actions/cart';
 
 const imageBaseUrl = 'https://backendapi.turing.com/images/products/';
 
@@ -34,6 +36,10 @@ class Product extends React.PureComponent {
         //console.log('Current state is: ', this.state);
     }
 
+    handleDetail = (product_id,name,price,description,thumbnail,quantity,size,color) => {
+        this.props.fetchProductDetail(product_id,name,price,description,thumbnail,quantity,size,color);
+    }
+
     render() {
 
         let quantity = 1;
@@ -52,7 +58,7 @@ class Product extends React.PureComponent {
                     <div className="card productCard">
                         <div className="card-body">
                             <p className="card-title text-center productTitle">{product.name}</p>
-                            <p className="card-text text-center textPink">${product.price}</p>
+                            <Link to="/details"><p className="card-text text-center textPink" onClick={()=>{this.handleDetail(product.product_id,product.name,product.price,product.description,product.thumbnail,quantity,size,color)}}>${product.price}</p></Link>
                             <form className="form-inline d-flex justify-content-center formContent">
                                 <select className="form-control form-control-sm selectSpacing">
                                     <option value="s">S</option>
@@ -91,7 +97,7 @@ class Product extends React.PureComponent {
                 <div className="container-fluid p-3">
                     <div className="row">
                         <div className="col-md-3">
-                            <Sidebar />
+                        <Sidebar />
                         </div>
                         <div className="col-md-9 row">
                             {renderProducts}
@@ -110,6 +116,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return { 
             fetchProducts: () => {dispatch(fetchProducts())},
+            fetchProductDetail: (product_id,name,price,description,thumbnail,quantity,size,color) => {dispatch(fetchProductDetail(product_id,name,price,description,thumbnail,quantity,size,color))},
             addToCart: (product_id,product,price,thumbnail,quantity,size,color) => {dispatch(addToCart(product_id,product,price,thumbnail,quantity,size,color))}
         }
 }

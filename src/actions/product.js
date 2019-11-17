@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_PRODUCT } from './types';
+import { FETCH_PRODUCT, FETCH_PRODUCT_DETAIL } from './types';
 
 const ROOT_URL = 'https://backendapi.turing.com/';
 
@@ -43,3 +43,19 @@ export const fetchSearchProduct = (searchText) => {
         });
     };
 };
+
+export const fetchProductDetail = (product_id,name,price,description,thumbnail,quantity,size,color) => {
+    return {
+        type: FETCH_PRODUCT_DETAIL,
+        payload: {
+            product_id,
+            name,
+            price,
+            description,
+            thumbnail,
+            quantity,
+            size,
+            color
+        }
+    }
+}
