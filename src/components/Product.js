@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Sidebar from './Sidebar';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/product';
 import { addToCart } from '../actions/cart';
@@ -89,6 +90,9 @@ class Product extends React.PureComponent {
             <React.Fragment>    
                 <div className="container-fluid p-3">
                     <div className="row">
+                        <div className="col-md-3">
+                            <Sidebar />
+                        </div>
                         <div className="col-md-9 row">
                             {renderProducts}
                         </div>
