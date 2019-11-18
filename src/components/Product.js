@@ -58,7 +58,7 @@ class Product extends React.PureComponent {
                     <div className="card productCard">
                         <div className="card-body">
                             <p className="card-title text-center productTitle">{product.name}</p>
-                            <Link to="/details"><p className="card-text text-center textPink" onClick={()=>{this.handleDetail(product.product_id,product.name,product.price,product.description,product.thumbnail,quantity,size,color)}}>${product.price}</p></Link>
+                            <Link to="/details" className="text-decoration-none"><h5 className="card-text text-center textPink p-3" onClick={()=>{this.handleDetail(product.product_id,product.name,product.price,product.description,product.thumbnail,quantity,size,color)}}>${product.price}</h5></Link>
                             <form className="form-inline d-flex justify-content-center formContent">
                                 <select className="form-control form-control-sm selectSpacing">
                                     <option value="s">S</option>
@@ -82,7 +82,7 @@ class Product extends React.PureComponent {
                         <img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} />
                         <div className="card-body">
                             <p className="card-title text-center productTitle">{product.name}</p>
-                            <p className="card-text text-center textPink">${product.price}</p>
+                            <p className="card-text font-weight-bold text-center textPink">${product.price}</p>
                         </div>
                     </div>
                 </div>
