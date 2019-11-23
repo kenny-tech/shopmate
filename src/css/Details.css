@@ -1,3 +1,11 @@
 .divPanel {
     background-color: #ffffff;
+    width: "100%";
+}
+
+.divSize {
+    width: 120px;
+    height: 30px;
+    background-color: #d3d3d3;
+    display: inline-block;
 }
