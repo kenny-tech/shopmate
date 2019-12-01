@@ -1,35 +1,95 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+
+import { connect } from 'react-redux';
 
 class Signup extends Component {
-    render() {
-        return (
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="form-group">
-                                <input type="email" className="form-control" name="email" id="" placeholder="Email Address"/>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="form-group">
-                                <input type="password" className="form-control" name="password" id="password" placeholder="Password" required />
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="row">
-                        <div className="col-md-12">
-                            <button type="button" className="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
+    handleFormSubmit(formProps) {
+        this.props.signupUser(formProps);
+    }
+
+    renderField = ({ input, label, type, className,  meta: { touched, error, warning } }) => (
+        <div>
+          <label>{label}</label>
+          <div>
+            <input {...input} placeholder={label} type={type} className={className}/>
+            {touched && ((error && <span className="text-danger">{error}</span>) || (warning && <span>{warning}</span>))}
+          </div>
+        </div>
+    );
+
+    renderError() {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    Oops! {this.props.errorMessage}
                 </div>
-            </div>
-        )
+            );
+        }
+    }
+    
+    render() {
+        const { handleSubmit, submitting } = this.props;
+
+        return (
+            <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                <fieldset className="form-group">
+                    <Field 
+                        className="form-control"
+                        name="email" 
+                        type="email" 
+                        component={this.renderField} 
+                        label="Email"/>
+                </fieldset>
+                <fieldset className="form-group">
+                    <Field 
+                        className="form-control"
+                        name="password" 
+                        type="password" 
+                        component={this.renderField} 
+                        label="Password"/>
+                </fieldset>
+                <fieldset className="form-group">
+                    <Field
+                        className="form-control" 
+                        name="passwordConfirmation" 
+                        type="password" 
+                        component={this.renderField} 
+                        label="Password Confirmation"/>
+                </fieldset>
+                {this.renderError()}
+                <button type="submit" className="btn btn-primary" disabled={submitting}>Sign Up</button>
+          </form>
+        );
     }
 }
 
-export default Signup;
+const validate = values => {
+    const errors = {};
+
+    if (!values.email) {
+        errors.email = 'Please enter an email';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+    }
+
+    if (!values.password) {
+        errors.password = 'Please enter a password';
+    }
+
+    if (!values.passwordConfirmation) {
+        errors.passwordConfirmation = 'Please enter a password confirmation';
+    }
+
+    if (values.password !== values.passwordConfirmation) {
+        errors.passwordConfirmation = 'Password must match';
+    }
+
+    return errors;
+};
+
+export default reduxForm({
+    form: 'signup',
+    validate
+})(connect(null, null)(Signup));
