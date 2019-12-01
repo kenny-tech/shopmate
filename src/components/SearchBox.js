@@ -23,7 +23,7 @@ class SearchBox extends Component {
     render() {
         return (
             <div className="form-group searchBox">
-            <input type="text" name="search" placeholder="Search..." onChange={this.handleChange} onKeyDown={this.handleKeyDown} class="form-control"/>
+            <input type="text" name="search" placeholder="Search..." onChange={this.handleChange} onKeyDown={this.handleKeyDown} className="form-control"/>
             </div>
         )
     }

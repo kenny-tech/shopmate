@@ -1,20 +1,30 @@
 import { ADD_TO_CART } from './types';
+import { REMOVE_FROM_CART } from './types';
 
-export function addToCart(product_id,product_name,price,size,color)
+export const addToCart = (product_id,product,price,thumbnail,quantity,size,color) =>
 {
-    let cartItems = {
-        product_id: product_id,
-        product_name: product_name,
-        price: price,
-        size: size,
-        color: color 
-    }
-    alert(product_id);
-    console.log('Cart Items: ', cartItems)
     return {
         type: ADD_TO_CART,
-        payload: cartItems
-    }
+        payload: {
+            product_id,
+            product,
+            price,
+            thumbnail,
+            quantity,
+            size,
+            color
+        }
+      }
+}
+
+export const removeFromCart = (product_id,price) => {
+    return {
+        type: REMOVE_FROM_CART,
+        payload: {
+            product_id,
+            price
+        }
+    }   
 }
 
 

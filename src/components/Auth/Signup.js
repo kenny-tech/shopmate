@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-
 import { connect } from 'react-redux';
+
+import signupUser from '../../actions/auth';
 
 class Signup extends Component {
 
@@ -37,6 +38,14 @@ class Signup extends Component {
                 <fieldset className="form-group">
                     <Field 
                         className="form-control"
+                        name="name" 
+                        type="text" 
+                        component={this.renderField} 
+                        label="Name"/>
+                </fieldset>
+                <fieldset className="form-group">
+                    <Field 
+                        className="form-control"
                         name="email" 
                         type="email" 
                         component={this.renderField} 
@@ -68,6 +77,10 @@ class Signup extends Component {
 const validate = values => {
     const errors = {};
 
+    if (!values.name) {
+        errors.name = 'Please enter a name';
+    }
+
     if (!values.email) {
         errors.email = 'Please enter an email';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -89,7 +102,18 @@ const validate = values => {
     return errors;
 };
 
+const mapStateToProps = (state) => {
+    return { 
+        errorMessage: state.auth.error,
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return { signupUser: (formProps) => {dispatch(signupUser(formProps))}}
+}
+
+
 export default reduxForm({
     form: 'signup',
     validate
-})(connect(null, null)(Signup));
+})(connect(mapStateToProps, mapDispatchToProps)(Signup));

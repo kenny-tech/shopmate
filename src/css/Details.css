@@ -1,0 +1,26 @@
+.divPanel {
+    background-color: #ffffff;
+    width: "100%";
+}
+
+.divSizeBox {
+    width: 100px;
+    height: 30px;
+    background-color: #d3d3d3;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.divColorBox {
+    width: 60px;
+    height: 30px;
+    background-color: #d3d3d3;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.buttonAddToCart {
+    background-color: #FF1493 !important;
+    color: #FFFFFF !important;
+    border-radius: 20px !important;
+}
