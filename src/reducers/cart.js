@@ -1,8 +1,10 @@
 import { ADD_TO_CART } from '../actions/types';
 import { REMOVE_FROM_CART } from '../actions/types';
+import { UPDATE_CART_ITEM_QUANTITY } from '../actions/types';
 
 const initState = {
     cart:[],
+    quantity: 1,
     total: 0
 }
 
@@ -12,7 +14,7 @@ export const reducer = ( state = initState, action ) => {
             return  { 
                         ...state, 
                         cart: [action.payload, ...state.cart],
-                        total: state.total + parseFloat(action.payload.price)
+                        total: state.total + parseFloat(state.quantity * action.payload.price)
                     }
         case REMOVE_FROM_CART: 
             return {
@@ -20,6 +22,18 @@ export const reducer = ( state = initState, action ) => {
                         cart: state.cart.filter(product => product.product_id !== action.payload.product_id),
                         total: state.total - parseFloat(action.payload.price)
                     }
+        case UPDATE_CART_ITEM_QUANTITY: 
+            // find product in cart
+            let product = state.cart.find(product => product.product_id === action.payload.product_id);
+            // remove existing product from cart
+            let newCart = state.cart.filter(product => product.product_id !== action.payload.product_id);
+            // add updated quantity to the product
+            newCart.push(product);
+            return {
+                ...state,
+                cart: newCart,
+                total: state.total + parseFloat(action.payload.quantity * product.price)
+            }
         default:
             return state;
     }
