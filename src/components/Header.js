@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Modal from '../components/Modal';
 import Signup from '../components/Auth/Signup';
+import Signin from '../components/Auth/Signin';
 import '../css/Header.css';
 
 class Header extends Component {
@@ -26,8 +27,12 @@ class Header extends Component {
                         <div className="col-md-6">
                             <span onClick={this.toggleModal} className="pull-right cursor-pointer">Register Now</span>
                         </div>
+                        {/* <div className="col-md-6">
+                            <span onClick={this.toggleModal} className="pull-right cursor-pointer">Sign in</span>
+                        </div> */}
                     </div>
                     <Modal open={this.state.showModal} onClose={this.toggleModal} title="Sign up"><Signup /></Modal>
+                    {/* <Modal open={this.state.showModal} onClose={this.toggleModal} title="Sign in"><Signin /></Modal> */}
                 </div>
             </React.Fragment>
         )
