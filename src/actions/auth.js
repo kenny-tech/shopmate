@@ -13,7 +13,7 @@ export const signupUser = ({ name, email, password }) => {
                     payload: true
                 });
                 localStorage.setItem('token', response.data.accessToken);
-                console.log('Registration successful. Your access token is: ',response.data.accessToken);
+                // console.log('Registration successful. Your access token is: ',response.data.accessToken);
             })
             .catch(err => {
                 dispatch({
@@ -33,7 +33,7 @@ export const signinUser = ({ email, password }) => {
                     payload: true
                 });
                 localStorage.setItem('token', response.data.accessToken);
-                console.log('Login successful. Your access token is: ',response.data.accessToken);
+                // console.log('Login successful. Your access token is: ',response.data.accessToken);
             })
             .catch(err => {
                 dispatch({
