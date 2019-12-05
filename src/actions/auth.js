@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
 
-const ROOT_URL = 'https://backendapi.turing.com/';
+const ROOT_URL = 'https://backendapi.turing.com';
 
 export const signupUser = ({ name, email, password }) => {
     return (dispatch) => {
