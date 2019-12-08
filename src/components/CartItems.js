@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import '../css/Cart.css';
-import { removeFromCart } from '../actions/cart';
+import { removeFromCart, updateCartItemQuantity } from '../actions/cart';
 import Button from './Button';
 
 const imageBaseUrl = 'https://backendapi.turing.com/images/products/';
@@ -11,6 +11,11 @@ class CartItems extends Component {
 
     handleClick = (product_id, price) => {
         this.props.removeFromCart(product_id, price); 
+    }
+
+    handleQuantityChange = (event, product_id) => {
+        let quantity = event.target.value;
+        this.props.updateCartItemQuantity(product_id,quantity);
     }
 
     render() {
@@ -36,7 +41,7 @@ class CartItems extends Component {
                                             <tr>
                                                 <td><img src={imageBaseUrl + product.thumbnail} className="card-img-top img-responsive" alt={product.name} /><br/>{product.product}</td>
                                                 <td>Size: {product.size}<br/>Color: {product.color}</td>
-                                                <td><input type="number" className="form-control" style={{width:'80px'}} defaultValue={product.quantity} min="1"/></td>
+                                                <td><input type="number" className="form-control" style={{width:'80px'}} defaultValue={product.quantity} min="1" onChange={(event) => this.handleQuantityChange(event,product.product_id)}/></td>
                                                 <td>${product.price}</td>
                                                 <td><span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></td>
                                             </tr>
@@ -62,7 +67,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return { removeFromCart: (product_id, price) => {dispatch(removeFromCart(product_id, price))}}
+    return { 
+        removeFromCart: (product_id, price) => {dispatch(removeFromCart(product_id, price))},
+        updateCartItemQuantity: (product_id,quantity) => {dispatch(updateCartItemQuantity((product_id, quantity)))}
+
+        }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(CartItems);

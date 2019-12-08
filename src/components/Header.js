@@ -7,12 +7,19 @@ import '../css/Header.css';
 
 class Header extends Component {
     state = {
-        showModal: false
+        showSignupModal: false,
+        showSigninModal: false
     }
 
-    toggleModal = () => {
+    toggleSignupModal = () => {
         this.setState({
-            showModal: !this.state.showModal
+            showSignupModal: !this.state.showSignupModal
+        })
+    }
+
+    toggleSigninModal = () => {
+        this.setState({
+            showSigninModal: !this.state.showSigninModal
         })
     }
 
@@ -25,14 +32,12 @@ class Header extends Component {
                             <p>Logo</p>
                         </div>
                         <div className="col-md-6">
-                            <span onClick={this.toggleModal} className="pull-right cursor-pointer">Register Now</span>
+                            <span onClick={this.toggleSignupModal} className="pull-right cursor-pointer signupSpan">Sign up </span>
+                            <span onClick={this.toggleSigninModal} className="pull-right cursor-pointer">Sign in</span>
                         </div>
-                        {/* <div className="col-md-6">
-                            <span onClick={this.toggleModal} className="pull-right cursor-pointer">Sign in</span>
-                        </div> */}
                     </div>
-                    <Modal open={this.state.showModal} onClose={this.toggleModal} title="Sign up"><Signup /></Modal>
-                    {/* <Modal open={this.state.showModal} onClose={this.toggleModal} title="Sign in"><Signin /></Modal> */}
+                    <Modal open={this.state.showSignupModal} onClose={this.toggleSignupModal} title="Sign up"><Signup /></Modal>
+                    <Modal open={this.state.showSigninModal} onClose={this.toggleSigninModal} title="Sign in"><Signin /></Modal>
                 </div>
             </React.Fragment>
         )
