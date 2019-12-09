@@ -4,7 +4,7 @@ export const reducer = ( state = {}, action) => {
     
     switch (action.type) {
         case FETCH_REGION:
-            return { ...state, shippingRegions: action.payload }
+            return { ...state, isRegion: true, shippingRegions: action.payload }
         default:
             return state;
     }

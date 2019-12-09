@@ -21,11 +21,6 @@ class Checkout extends Component {
     }
 
     render() {    
-        if(!this.props.regions) {
-            return <div></div>
-        }
-
-        console.log('The regions are here: ', this.props.regions);      
         return (
             <React.Fragment>    
                 <div className="container pt-3">
@@ -70,9 +65,11 @@ class Checkout extends Component {
                                     <label for="country">Region</label>
                                     <select className="form-control">
                                         {
+                                            this.props.isRegion?
                                             this.props.regions.map(region => {
                                                 return <option id={region.shipping_region_id} value={region.shipping_region_id}>{region.shipping_region}</option>
-                                            })
+                                            }) :
+                                            <option value="">Unable to fetch regions</option>
                                         }
                                     </select>
                                 </div>
@@ -86,7 +83,10 @@ class Checkout extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { regions: state.regions.shippingRegions }
+    return { 
+        regions: state.regions.shippingRegions,
+        isRegion: state.regions.isRegion
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
