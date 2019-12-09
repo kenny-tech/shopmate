@@ -41,10 +41,16 @@ class Cart extends Component {
                             );
                         })}   
                         {
-                            this.props.cart!==null? <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p> : null
+                            this.props.isCart? 
+                            (
+                                <div>
+                                    <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p>
+                                    <div className="d-block text-center cursor-pointer" onClick={this.toggleModal}><Button buttonText="View Details" /></div>
+                                </div>
+                            ) 
+                            : null
                         }
                     </div> 
-                    <div className="d-block text-center cursor-pointer" onClick={this.toggleModal}><Button buttonText="View Details" /></div>
                     <Modal open={this.state.showModal} onClose={this.toggleModal} title="Cart Items"><CartItems /></Modal>
                 </React.Fragment>
             )
@@ -55,6 +61,7 @@ class Cart extends Component {
 
 const mapStateToProps = (state) => {
     return { 
+        isCart:state.cart.isCart,
         cart: state.cart.cart,
         total: state.cart.total
     };

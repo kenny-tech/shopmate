@@ -11,6 +11,7 @@ export const reducer = ( state = initState, action ) => {
         case ADD_TO_CART:
             return  { 
                         ...state, 
+                        isCart: true,
                         cart: [action.payload, ...state.cart],
                         total: state.total + parseFloat(action.payload.price)
                     }
@@ -24,7 +25,7 @@ export const reducer = ( state = initState, action ) => {
             // find product in cart
             // console.log(state.cart);
             let product = state.cart.find(product => product.product_id === action.payload.product_id);
-            console.log(product);
+            //console.log(product);
             // remove existing product from cart
             let newCart = state.cart.filter(product => product.product_id !== action.payload.product_id);
             // add updated quantity to the product
