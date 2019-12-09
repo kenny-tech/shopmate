@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Product from './components/Product';
 import Details from './components/Details';
 import Default from './components/Default';
+import Checkout from './components/Checkout';
 
 class App extends Component {
   render(){
@@ -14,7 +15,7 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Switch>
-          <Route exact path="/" component={Product}></Route>
+          <Route exact path="/" component={Checkout}></Route>
           <Route path="/details" component={Details}></Route>
           <Route component={Default}></Route>
         </Switch>
