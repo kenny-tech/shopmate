@@ -15,7 +15,7 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Switch>
-          <Route exact path="/" component={UpdateProfile}></Route>
+          <Route exact path="/" component={Product}></Route>
           <Route path="/details" component={Details}></Route>
           <Route component={Default}></Route>
         </Switch>
