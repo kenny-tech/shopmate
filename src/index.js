@@ -24,7 +24,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 const persistConfig = {
     key: 'cart',
     storage: storage,
-    whitelist: ['cart','auth'] // which reducer want to store
+    whitelist: ['cart','auth',] // which reducer want to store
   };
   const pReducer = persistReducer(persistConfig, rootReducer);
 

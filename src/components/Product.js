@@ -21,11 +21,23 @@ class Product extends React.PureComponent {
     state = {
         hover: false,
         productId: 0,
+        size: 'S',
+        color: 'White',
+        quantity: 1
     }
 
-    handleClick = (product_id,product,price,thumbnail,quantity,size,color) => {
-        //alert(product_id);
+    handleSizeChange = (e) => {
+        this.setState({size:e.target.value});
+    }    
+
+    handleColorChange = (e) => {
+        this.setState({color:e.target.value});
+    }    
+
+    handleClick = (event,product_id,product,price,thumbnail,quantity,size,color) => {
         this.props.addToCart(product_id,product,price,thumbnail,quantity,size,color);
+        this.setState({size:'S', color: 'White'});
+        event.preventDefault();
     }
 
     toggleHover = (product_id) => {
@@ -42,10 +54,6 @@ class Product extends React.PureComponent {
 
     render() {
 
-        let quantity = 1;
-        let size = 'S';
-        let color = 'White';
-
         //console.log('rendering...');
         
         if(!this.props.products) {
@@ -58,20 +66,20 @@ class Product extends React.PureComponent {
                     <div className="card productCard">
                         <div className="card-body">
                             <p className="card-title text-center productTitle">{product.name}</p>
-                            <Link to="/details" className="text-decoration-none"><h5 className="card-text text-center textPink p-3" onClick={()=>{this.handleDetail(product.product_id,product.name,product.price,product.description,product.thumbnail,quantity,size,color)}}>${product.price}</h5></Link>
+                            <Link to="/details" className="text-decoration-none"><h5 className="card-text text-center textPink p-3" onClick={()=>{this.handleDetail(product.product_id,product.name,product.price,product.description,product.thumbnail,this.state.quantity,this.state.size,this.state.color)}}>${product.price}</h5></Link>
                             <form className="form-inline d-flex justify-content-center formContent">
-                                <select className="form-control form-control-sm selectSpacing">
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
+                                <select className="form-control form-control-sm selectSpacing" onChange={this.handleSizeChange}>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
                                 </select>
-                                <select className="form-control form-control-sm">
-                                    <option value="white">White</option>
-                                    <option value="black">Black</option>
-                                    <option value="yellow">Yellow</option>
+                                <select className="form-control form-control-sm" onChange={this.handleColorChange}>
+                                    <option value="White">White</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Yellow">Yellow</option>
                                 </select>
                             </form>
-                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={()=>this.handleClick(product.product_id,product.name,product.price,product.thumbnail,quantity,size,color)}>Add to cart</button></p>
+                            <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={(event)=>this.handleClick(event,product.product_id,product.name,product.price,product.thumbnail,this.state.quantity,this.state.size,this.state.color)}>Add to cart</button></p>
                         </div>
                     </div>
                 </div>)
