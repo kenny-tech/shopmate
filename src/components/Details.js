@@ -29,9 +29,11 @@ class Details extends Component {
         this.setState({color: color, colorBgColor: '#FF1493', colorTextColor: '#FFFFFF'});
     }
 
-    handleAddToCartClick = (product_id,product,price,thumbnail,quantity,size,color) => {
+    handleAddToCartClick = (event,product_id,product,price,thumbnail,quantity,size,color) => {
         this.props.addToCart(product_id,product,price,thumbnail,quantity,size,color);
+        event.preventDefault();
         alert('Product successfully added to cart');
+        window.location.href = '/';
     }
     
     render() {
@@ -105,7 +107,7 @@ class Details extends Component {
                                                         <div className="divColorBox d-flex justify-content-center align-items-center d-inline-block" onClick = {() => this.handleColorChange('Purple')} style={{ cursor: 'pointer' }}>PURPLE</div>
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-default btn-m mt-3 buttonAddToCart" onClick={()=>this.handleAddToCartClick(product.product_id,product.name,product.price,product.thumbnail,this.state.quantity,this.state.size,this.state.color)}>Add to cart</button>
+                                                <button className="btn btn-default btn-m mt-3 buttonAddToCart" onClick={(event)=>this.handleAddToCartClick(event,product.product_id,product.name,product.price,product.thumbnail,this.state.quantity,this.state.size,this.state.color)}>Add to cart</button>
                                             </div>
                                         </div>
                                     </form>

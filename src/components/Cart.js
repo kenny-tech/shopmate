@@ -34,9 +34,9 @@ class Cart extends Component {
                         {this.props.cart.map(product => {
                             return (
                                 <div className="cartDiv">
-                                    <p>1 <span className="times">x </span>{product.product}<span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></p>
-                                    <p>Size: S</p>
-                                    <p>Color: White</p>
+                                    <p>{product.quantity}<span className="times">x </span>{product.product}<span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></p>
+                                    <p>Size: {product.size}</p>
+                                    <p>Color: {product.color}</p>
                                 </div>
                             );
                         })}   
