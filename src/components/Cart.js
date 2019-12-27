@@ -44,7 +44,11 @@ class Cart extends Component {
                             this.props.isCart? 
                             (
                                 <div>
-                                    <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p>
+                                    {
+                                        this.props.cart.length > 0 ?
+                                        <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p>
+                                        : null
+                                    }
                                     <div className="d-block text-center cursor-pointer" onClick={this.toggleModal}><Button buttonText="View Details" /></div>
                                 </div>
                             ) 
