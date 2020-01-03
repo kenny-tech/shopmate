@@ -31,6 +31,12 @@ class Cart extends Component {
             return (
                 <React.Fragment>
                     <div className="categoryDiv">
+                        {
+                            this.props.existedProduct? 
+                            (<div className="alert alert-danger">
+                                {this.props.product} already in cart
+                            </div>) : null
+                        }
                         {this.props.cart.map(product => {
                             return (
                                 <div className="cartDiv">
@@ -67,7 +73,9 @@ const mapStateToProps = (state) => {
     return { 
         isCart:state.cart.isCart,
         cart: state.cart.cart,
-        total: state.cart.total
+        total: state.cart.total,
+        existedProduct: state.cart.existedProduct,
+        product: state.cart.product
     };
 }
 
