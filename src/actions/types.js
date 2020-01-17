@@ -9,3 +9,5 @@ export const REMOVE_FROM_CART = 'remove_from_Cart';
 export const AUTH_USER = 'auth_user';
 export const UNAUTH_USER = 'unauth_user';
 export const AUTH_ERROR = 'auth_error';
+export const SUB_QUANTITY = 'sub_quantity';
+export const ADD_QUANTITY = 'add_quantity';

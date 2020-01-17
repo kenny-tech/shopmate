@@ -34,11 +34,11 @@ class Cart extends Component {
                         {
                             this.props.existedProduct? 
                             (<div className="alert alert-danger">
-                                {this.props.product} already in cart
+                                Product already in cart
                             </div>) : null
                         }
                         {this.props.cart.map(product => {
-                            return (
+                            return ( 
                                 <div className="cartDiv">
                                     <p>{product.quantity}<span className="times">x </span>{product.product}<span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></p>
                                     <p>Size: {product.size}</p>
@@ -52,7 +52,7 @@ class Cart extends Component {
                                 <div>
                                     {
                                         this.props.cart.length > 0 ?
-                                        <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p>
+                                        <p className="float-right">Total Price: <span className="textPink total">${this.props.total}</span></p>
                                         : null
                                     }
                                     <div className="d-block text-center cursor-pointer" onClick={this.toggleModal}><Button buttonText="View Details" /></div>
