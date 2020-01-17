@@ -44,6 +44,26 @@ export const reducer = ( state = initState, action ) => {
                 ...state,
                 total: newTotal
             }
+        case SUB_QUANTITY: 
+            let cartItem = state.cart.find(item => item.product_id === action.payload.product_id)
+            //if the quantity == 0 then product should be removed
+            if(cartItem.quantity === 0) {
+                let newItems = state.cart.filter(item => item.product_id !== action.payload.product_id)
+                let newTotal = state.total - addedItem.price
+                return {
+                    ...state,
+                    cart: [newItems],
+                    total: newTotal
+                }
+            }
+            else {
+                cartItem.quantity -= 1
+                let newTotal = state.total - cartItem.price
+                return {
+                    ...state,
+                    total: newTotal
+                }
+            }
         default:
             return state;
     }
