@@ -38,8 +38,8 @@ export const reducer = ( state = initState, action ) => {
             let addedItem = state.cart.find(item => item.product_id === action.payload.product_id)
             // console.log('addedItem: ',addedItem);
             addedItem.quantity += 1
-            addedItem.price += parseFloat(addedItem.price)
-            let newTotal = state.total + parseFloat(addedItem.price)
+            addedItem.price = parseFloat(addedItem.price) * 2
+            let newTotal = parseFloat(state.total) + parseFloat(addedItem.price)
             return {
                 ...state,
                 total: newTotal

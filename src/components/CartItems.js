@@ -64,7 +64,7 @@ class CartItems extends Component {
                                 })}   
                             </tbody>
                         </table>
-                        <div className="float-right d-block">{ this.props.cart!==null? <p>Total Price: <span className="textPink total">${this.props.total}</span></p> : null }</div>
+                        <div className="float-right d-block">{ this.props.cart!==null? <p>Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p> : null }</div>
                         <div className="d-block text-right cursor-pointer"><Button buttonText = "Checkout"/></div>
                     </div> 
                 </React.Fragment>
