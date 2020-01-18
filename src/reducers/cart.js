@@ -38,32 +38,45 @@ export const reducer = ( state = initState, action ) => {
             let addedItem = state.cart.find(item => item.product_id === action.payload.product_id)
             // console.log('addedItem: ',addedItem);
             addedItem.quantity += 1
-            addedItem.price = parseFloat(addedItem.price) * 2
+            addedItem.price = parseFloat(addedItem.price) + parseFloat(addedItem.price)
             let newTotal = parseFloat(state.total) + parseFloat(addedItem.price)
             return {
                 ...state,
                 total: newTotal
             }
         case SUB_QUANTITY: 
-            let cartItem = state.cart.find(item => item.product_id === action.payload.product_id)
-            //if the quantity == 0 then product should be removed
-            if(cartItem.quantity === 0) {
-                let newItems = state.cart.filter(item => item.product_id !== action.payload.product_id)
-                let newTotal = state.total - addedItem.price
-                return {
+            let addedItems = state.cart.find(item=> item.product_id === action.payload.product_id) 
+            //if the qt == 0 then it should be removed
+            if(addedItems.quantity === 1){
+                let new_items = state.cart.filter(item=>item.product_id !== action.payload.product_id)
+                let newTotal = state.total - addedItems.price
+                return{
                     ...state,
-                    cart: [newItems],
+                    cart: new_items,
                     total: newTotal
                 }
             }
             else {
-                cartItem.quantity -= 1
-                let newTotal = state.total - cartItem.price
-                return {
+                addedItems.quantity -= 1
+                let newTotal = state.total - addedItems.price
+                return{
                     ...state,
                     total: newTotal
                 }
             }
+
+            //if the quantity == 0 then product should be removed
+            // if(cartItem.quantity === 1) {
+            // }
+            // else {
+            //     cartItem.quantity -= 1
+            //     let newTotal = state.total - cartItem.price
+            //     return {
+            //         ...state,
+            //         cart: [cartItem],
+            //         total: newTotal
+            //     }
+            // }
         default:
             return state;
     }
