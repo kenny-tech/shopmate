@@ -26,8 +26,8 @@ const Product = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(this.props.fetchProducts());
-    })
+        dispatch(fetchProducts());
+    },[])
 
     const handleSizeChange = (e) => {
         setSize(e.target.value);
@@ -76,7 +76,7 @@ const Product = () => {
                                 <option value="Yellow">Yellow</option>
                             </select>
                         </form>
-                        <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={(event)=>handleClick(event,product.product_id,product.name,product.price,product.thumbnail,this.state.quantity,this.state.size,this.state.color)}>Add to cart</button></p>
+                        <p className="text-center"><button className="btn btn-default btn-xs buttonAddToCart" onClick={(event)=>handleClick(event,product.product_id,product.name,product.price,product.thumbnail,quantity,size,color)}>Add to cart</button></p>
                     </div>
                 </div>
             </div>)
