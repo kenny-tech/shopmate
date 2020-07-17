@@ -1,5 +1,5 @@
 import { ADD_TO_CART } from './types';
-import { REMOVE_FROM_CART, UPDATE_CART_ITEM_QUANTITY } from './types';
+import { REMOVE_FROM_CART, UPDATE_CART_ITEM_QUANTITY, SUB_QUANTITY, ADD_QUANTITY } from './types';
 
 export const addToCart = (product_id,product,price,thumbnail,quantity,size,color) =>
 {
@@ -36,3 +36,22 @@ export const updateCartItemQuantity = (product_id,quantity) => {
         }
     }
 }
+
+export const addQuantity = (product_id) => {
+    return {
+        type: ADD_QUANTITY,
+        payload: {
+            product_id,
+        }
+    }
+}
+
+export const subtractQuantity = (product_id) => {
+    return {
+        type: SUB_QUANTITY,
+        payload: {
+            product_id,
+        }
+    }
+}
+

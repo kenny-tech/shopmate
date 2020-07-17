@@ -31,12 +31,18 @@ class Cart extends Component {
             return (
                 <React.Fragment>
                     <div className="categoryDiv">
+                        {
+                            this.props.existedProduct? 
+                            (<div className="alert alert-danger">
+                                Product already in cart
+                            </div>) : null
+                        }
                         {this.props.cart.map(product => {
-                            return (
+                            return ( 
                                 <div className="cartDiv">
-                                    <p>1 <span className="times">x </span>{product.product}<span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></p>
-                                    <p>Size: S</p>
-                                    <p>Color: White</p>
+                                    <p>{product.quantity}<span className="times">x </span>{product.product}<span className="pull-right removeItem removeItemHover" onClick={()=>this.handleClick(product.product_id, product.price)}>x</span></p>
+                                    <p>Size: {product.size}</p>
+                                    <p>Color: {product.color}</p>
                                 </div>
                             );
                         })}   
@@ -44,7 +50,11 @@ class Cart extends Component {
                             this.props.isCart? 
                             (
                                 <div>
-                                    <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p>
+                                    {
+                                        this.props.cart.length > 0 ?
+                                        <p className="float-right">Total Price: <span className="textPink total">${this.props.total.toFixed(2)}</span></p>
+                                        : null
+                                    }
                                     <div className="d-block text-center cursor-pointer" onClick={this.toggleModal}><Button buttonText="View Details" /></div>
                                 </div>
                             ) 
@@ -63,7 +73,9 @@ const mapStateToProps = (state) => {
     return { 
         isCart:state.cart.isCart,
         cart: state.cart.cart,
-        total: state.cart.total
+        total: state.cart.total,
+        existedProduct: state.cart.existedProduct,
+        product: state.cart.product
     };
 }
 
