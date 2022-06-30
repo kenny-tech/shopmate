@@ -1,2 +1,2 @@
 # store
-A store app with react and context api
+An ecommerce app with react and redux
